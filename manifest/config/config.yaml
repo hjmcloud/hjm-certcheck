@@ -1,0 +1,31 @@
+# config.yaml for HJMCertcheck service.
+
+# 日志配置
+logger:
+  level: "all"
+  stdout: true
+
+# 计划任务
+
+cron:
+  pattern: "0 0 8 * * *" #  任务计划 使用CRON语法格式,参考 https://goframe.org/pages/viewpage.action?pageId=30736411
+  runOnStart: true # 是否在服务启动时执行一次 ture/false
+
+##### 以上配置项修改后需要重启生效,以下为动态配置,修改后可直接生效#####
+
+# 剩余多少天提醒
+warnLeftDays: 7
+
+# 钉钉机器人配置
+dingTalk:
+  enable: false # 是否启用钉钉通知 true/false
+  accessToken: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" # 钉钉机器人accessToken
+  secret: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" # 钉钉机器人secret
+
+# 要检测的项目列表
+urls:
+  - "https://www.baidu.com"
+  - "https://www.163.com"
+  - "https://www.sohu.com"
+  - "https://www.lidong.xin"
+  - "https://gcslaoli.gitee.io"
