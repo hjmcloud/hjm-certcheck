@@ -40,7 +40,7 @@ jobs:
           # The ssh private key for writing to the remote repository, if using ssh
           GIT_SSH_PRIVATE_KEY: ${{secrets.GITHUB_PRIVATEKEY}} # optional
           # if true, skips host key verification. Mutually exclusive with GIT_SSH_KNOWN_HOSTS
-          GIT_SSH_NO_VERIFY_HOST: true # optional, default is false
+          GIT_SSH_NO_VERIFY_HOST: false # optional, default is false
           # Push all refs instead of just the current branch
           PUSH_ALL_REFS: true # optional, default is true
           # The arugments to use when pushing the repository
