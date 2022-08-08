@@ -32,7 +32,7 @@ var (
 			// 生成sVersion结构体
 			res := sVersion{
 				Name:     "hjm-certcheck",
-				Homepage: "https://gitee.com/hjmcloud/hjm-certcheck",
+				Homepage: "https://hjmcloud.cn/hjm-certcheck",
 				Version:  data["version"].(string),
 				GoFrame:  info.GoFrame,
 				Golang:   info.Golang,
