@@ -11,6 +11,7 @@ import (
 type sVersion struct {
 	Name     string //程序名称
 	Homepage string //程序主页
+	Version  string //程序版本
 	GoFrame  string //goframe version
 	Golang   string //golang version
 	Git      string //git commit id
@@ -25,11 +26,14 @@ var (
 		Func: func(ctx context.Context, parser *gcmd.Parser) (err error) {
 			info := gbuild.Info()
 			// gutil.Dump(info)
+			data := gbuild.Data()
+			// gutil.Dump(data)
 
 			// 生成sVersion结构体
 			res := sVersion{
 				Name:     "hjm-certcheck",
 				Homepage: "https://gitee.com/hjmcloud/hjm-certcheck",
+				Version:  data["version"].(string),
 				GoFrame:  info.GoFrame,
 				Golang:   info.Golang,
 				Git:      info.Git,
