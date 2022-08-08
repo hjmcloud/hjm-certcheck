@@ -1,3 +1,9 @@
+# 同步仓库镜像 From: Github Repository
+# Path: .github/workflows/sync-mirror.yml
+# 需配置环境变量: REMOTE: 远程仓库地址, 例如: git@gitee.com:hjmcloud/hjm-certcheck.git
+# 使用到的action: actions/checkout@v3, yesolutions/mirror-action@v0.6.0
+# actions/checkout@v3: https://github.com/marketplace/actions/checkout
+# yesolutions/mirror-action@v0.6.0: https://github.com/marketplace/actions/mirror-repository
 name: Sync Mirror
 on:
   push:
@@ -7,32 +13,22 @@ on:
       - v*
 env:
   TZ: Asia/Shanghai
-  REMOTE: git@gitee.com:hjmcloud/hjm-certcheck.git
+  REMOTE: git@gitee.com:hjmcloud/hjm-certcheck.git # 这里配置git仓库地址
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
+  # 任务名称  RepoMirror
+  RepoMirro:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      # 这里要把检出深度设置为0，否则会报错
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
-          mkdir -p ~/.ssh/
-          ssh-keyscan gitee.com >> ~/.ssh/known_hosts
+      # 同步仓库镜像
       - name: mirror-repository
         # You may pin to the exact commit or the version.
         # uses: yesolutions/mirror-action@082a9611ed4b64c796245a62b34584ee2ded6833
