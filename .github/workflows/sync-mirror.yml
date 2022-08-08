@@ -1,0 +1,49 @@
+name: Sync Mirror
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - v*
+env:
+  TZ: Asia/Shanghai
+  REMOTE: git@gitee.com:hjmcloud/hjm-certcheck.git
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+      - name: mirror-repository
+        # You may pin to the exact commit or the version.
+        # uses: yesolutions/mirror-action@082a9611ed4b64c796245a62b34584ee2ded6833
+        uses: yesolutions/mirror-action@v0.6.0
+        with:
+          # The remote repository e.g. https://github.com/octocat/foo.git or git@github.com:octocat/foo.git
+          REMOTE: ${{env.REMOTE}} # optional
+          # The ssh private key for writing to the remote repository, if using ssh
+          GIT_SSH_PRIVATE_KEY: ${{ecrets.GITHUB_PRIVATEKEY}} # optional
+          # if true, skips host key verification. Mutually exclusive with GIT_SSH_KNOWN_HOSTS
+          GIT_SSH_NO_VERIFY_HOST: true # optional, default is false
+          # Push all refs instead of just the current branch
+          PUSH_ALL_REFS: true # optional, default is true
+          # The arugments to use when pushing the repository
+          GIT_PUSH_ARGS: --tags --force --prune # optional, default is --tags --force --prune
+          # set to "true" to enable debug mode
+          DEBUG: false # optional, default is false
