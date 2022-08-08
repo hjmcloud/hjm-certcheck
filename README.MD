@@ -1,9 +1,16 @@
-# GoFrame Template For SingleRepo
+# hjm-certcheck 证书检测服务
 
-Project Makefile Commands: 
-- `make cli`: Install or Update to the latest GoFrame CLI tool.
-- `make dao`: Generate go files for `Entity/DAO/DO` according to the configuration file from `hack` folder.
-- `make service`: Parse `logic` folder to generate interface go files into `service` folder.
-- `make image TAG=xxx`: Run `docker build` to build image according `manifest/docker`.
-- `make image.push TAG=xxx`: Run `docker build` and `docker push` to build and push image according `manifest/docker`.
-- `make deploy TAG=xxx`: Run `kustomize build` to build and deploy deployment to kubernetes server group according `manifest/deploy`.
+## 功能说明
+
+- 在线检测证书是否过期
+- 检测服务端口是否开放
+- 证书临近过期提醒
+- 如果所有证书都正常,仍然发送一条提醒,以证明服务自身正常
+- 目前仅支持发送钉钉消息,请先配置钉钉机器人
+
+## 相关地址
+
+- [文档](https://hjmcloud.cn/hjm-certcheck)
+- [GitHub 仓库](https://github.com/hjmcloud/hjm-certcheck)
+- [GitHub Release](https://github.com/hjmcloud/hjm-certcheck/releases)
+- [Gitee 镜像仓库](https://gitee.com/hjmcloud/hjm-certcheck)
