@@ -7,8 +7,6 @@
 name: Sync Mirror
 on:
   push:
-    branches:
-      - master
     tags:
       - v*
 env:
