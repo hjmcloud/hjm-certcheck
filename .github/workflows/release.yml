@@ -62,7 +62,7 @@ jobs:
 
 ##############################################################################################
 #                               以下为Docker镜像的构建                                        #
-# 需要提前配置好 secrets.DOCKERHUB_USERNAME 和 secrets.DOCKERHUB_PASSWORD                     #
+# 需要提前配置好 secrets.DOCKERHUB_USERNAME 和 secrets.DOCKERHUB_TOKEN                        #
 # Dockerfile文件默认在 ./Dockerfile                                                          #
 ##############################################################################################
       -
