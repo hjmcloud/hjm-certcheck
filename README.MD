@@ -1,5 +1,7 @@
 # hjm-certcheck 证书检测服务
 
+[![Build Release](https://github.com/hjmcloud/hjm-certcheck/actions/workflows/release.yml/badge.svg)](https://github.com/hjmcloud/hjm-certcheck/actions/workflows/release.yml)[![Sync Mirror](https://github.com/hjmcloud/hjm-certcheck/actions/workflows/sync-mirror.yml/badge.svg)](https://github.com/hjmcloud/hjm-certcheck/actions/workflows/sync-mirror.yml)
+
 ## 功能说明
 
 - 在线检测证书是否过期
