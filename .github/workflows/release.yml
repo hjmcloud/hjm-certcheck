@@ -29,7 +29,7 @@ jobs:
 
       - name: Build CLI Binary For All Platform
         run: |
-          gf build main.go -n ${{env.BIN_NAME}} -a all -s all -p ./temp
+          gf build main.go -n ${{env.BIN_NAME}} -a all -s all -p ./temp -r '{"version":"${{github.ref_name}}"}'
       - name: Move Files Before Release
         run: |
           cd temp
