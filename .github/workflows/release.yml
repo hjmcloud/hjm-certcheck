@@ -1,4 +1,4 @@
-name: hjm-certcheck Build Release
+name: Build Release
 on:
   push:
     tags:
@@ -62,7 +62,7 @@ jobs:
 
 ##############################################################################################
 #                               以下为Docker镜像的构建                                        #
-# 需要提前配置好 secrets.DOCKERHUB_USERNAME 和 secrets.DOCKERHUB_PASSWORD                     #
+# 需要提前配置好 secrets.DOCKERHUB_USERNAME 和 secrets.DOCKERHUB_TOKEN                        #
 # Dockerfile文件默认在 ./Dockerfile                                                          #
 ##############################################################################################
       -
@@ -99,7 +99,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le
           push: true
           tags:  ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
