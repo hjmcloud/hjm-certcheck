@@ -28,12 +28,20 @@ var (
 			// gutil.Dump(info)
 			data := gbuild.Data()
 			// gutil.Dump(data)
+			// 如果data为空map
+
+			var binVersion string
+			if len(data) == 0 {
+				binVersion = "unknown"
+			} else {
+				binVersion = data["version"].(string)
+			}
 
 			// 生成sVersion结构体
 			res := sVersion{
 				Name:     "hjm-certcheck",
 				Homepage: "https://hjmcloud.cn/hjm-certcheck",
-				Version:  data["version"].(string),
+				Version:  binVersion,
 				GoFrame:  info.GoFrame,
 				Golang:   info.Golang,
 				Git:      info.Git,
